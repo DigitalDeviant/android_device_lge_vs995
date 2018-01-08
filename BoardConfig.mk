@@ -29,3 +29,20 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # inherit from the proprietary version
 -include vendor/lge/vs995/BoardConfigVendor.mk
+
+#TWRP Flags
+RECOVERY_VARIANT := twrp
+PRODUCT_COPY_FILES += device/lge/vs995/twrp.fstab:recovery/root/etc/twrp.fstab
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/Image.lz4-dtb
+TW_THEME := portrait_hdpi
+TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw
+RECOVERY_SDCARD_ON_DATA := true
+TW_SCREEN_BLANK_ON_BOOT := true
+TWRP_INCLUDE_LOGCAT := true
+TW_INCLUDE_CRYPTO := true
+
+#Shift the screen down to avoid the camera (psudo-second screen)
+TW_Y_OFFSET := 160
+TW_H_OFFSET := -160
+
+
