@@ -1,0 +1,21 @@
+TWRP device tree for LG V20 (VS995)
+
+run the following from your LineageOS android/system directory:
+git clone https://github.com/DigitalDeviant/android_device_lge_vs995.git device/lge/vs995
+
+or add (or replace the original) in your LineageOS manifest at .repo/local_manifests/rommservice.xml:
+<project name="DigitalDeviant/android_device_lge_vs995" path="device/lge/vs995" remote="github"/>
+
+and run:
+lunch lineage_vs995-userdebug
+make -j# recoveryimage
+
+where # is the number of your cpu cores +1 (i.e. for a 4 core CPU: make -j5 recoveryimage)
+
+The following may also be added to the LineageOS manifest at .repo/local_manifests/rommservice.xml:
+
+<project name="omnirom/android_bootable_recovery" path="bootable/recovery-twrp" remote="github" revision="android-8.0"/>
+<project name="omnirom/android_external_busybox" path="external/busybox" remote="github" revision="android-8.0"/>
+
+The source for the prebuilt kernel can be found here:
+https://github.com/DigitalDeviant/VS995_reStock/tree/twrp
